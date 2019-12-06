@@ -35,7 +35,8 @@ ticket3 = Ticket.new({
   'film_id' => film2.id })
 ticket3.save
 
-
+film1.customers_watching
+film2.customers_watching
 
 binding.pry
 nil

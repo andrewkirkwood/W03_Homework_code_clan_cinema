@@ -50,6 +50,13 @@ class Customer
     return results
   end
 
+  def check_film_count()
+    sql = "SELECT films.* FROM films
+    INNER JOIN tickets ON tickets.film_id = films.id WHERE customer_id = $1"
+    values = [@id]
+    return SqlRunner.run(sql, values).length
+  end
+
   def reduce_funds(film)
     @funds -= film.price
   end
