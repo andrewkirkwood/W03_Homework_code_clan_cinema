@@ -41,4 +41,22 @@ class Ticket
     SqlRunner.run(sql, values)
   end
 
+  def check_enough_funds(customer, film)
+    return true if customer.funds >= film.price
+    return false if customer.funds < film.price
+  end
+
+  def sell_ticket(customer,film)
+    if check_enough_funds(customer,film) == true
+      customer.reduce_funds(film)
+      sql = "UPDATE customers SET funds = $1 WHERE id = $2;"
+      values = [customer.funds, customer.id]
+      SqlRunner.run(sql, values)
+      ticket = ({'customer_id' => customer.id,
+      'film_id' => film.id })
+      Ticket.new(ticket).save
+    else
+      return nil
+    end
+  end
 end
