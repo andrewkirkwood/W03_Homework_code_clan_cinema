@@ -19,13 +19,15 @@ film1 = Film.new({ 'title' => 'Macbeth', 'price' => 5 })
 film1.save
 film2 = Film.new({ 'title' => 'Home Alone', 'price' => 10 })
 film2.save
+film3 = Film.new({ 'title' => 'The Departed', 'price' => 2 })
+film3.save
 
 ticket1 = Ticket.new({
   'customer_id' => customer1.id,
   'film_id' => film1.id })
 ticket1.save
 ticket2 = Ticket.new({
-  'customer_id' => customer2.id,
+  'customer_id' => customer1.id,
   'film_id' => film2.id })
 ticket2.save
 ticket3 = Ticket.new({
