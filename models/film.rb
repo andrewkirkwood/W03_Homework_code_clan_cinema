@@ -58,10 +58,10 @@ class Film
     return SqlRunner.run(sql, values).count
   end
 
-  def screenings
-    sql = "SELECT screenings.* FROM screenings
-    INNER JOIN films ON screenings.film_id = films.id
-    WHERE film_id = $1"
+  def self.screenings
+    sql = "SELECT films.*,films.title,screenings.screening_time FROM films
+ INNER JOIN screenings ON screenings.film_id = films.id
+ WHERE films.id = $1"
     values = [@id]
     data = SqlRunner.run(sql, values)
     return data.map { |screening| Film.new(screening)}

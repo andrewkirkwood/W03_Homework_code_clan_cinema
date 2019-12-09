@@ -42,8 +42,10 @@ ticket3.save
 
 screening1 = Screening.new({ 'film_id' => film1.id, 'screening_time' => 1800})
 screening1.save
-screening2 = Screening.new({ 'film_id' => film1.id, 'screening_time' => 1830})
-
+screening2 = Screening.new({ 'film_id' => film2.id, 'screening_time' => 1830})
+screening2.save
+screening3 = Screening.new({ 'film_id' => film3.id, 'screening_time' => 1800})
+screening3.save
 
 film1.customers_watching
 film2.customers_watching
